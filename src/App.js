@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { Layout } from "antd";
+import React from "react";
+import "./App.css";
+import Table from "./components/Table";
+import Svg from "./components/Svg";
+import { MOCK_DATA, TABLE_COLUMNS } from "./constants/tableConfig";
+import Filter from "./components/Filter";
+import { FilterOutlined } from "@ant-design/icons";
 
-function App() {
+const { Header, Content, Footer } = Layout;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout className="layout_container">
+      <Header className="header">
+        <Svg nameOfSvg="logo" />
+        <div className="demo-logo">AUTO SKLAD</div>
+        <Filter />
+      </Header>
+      <Content className="site-layout">
+        <Table columns={TABLE_COLUMNS} data={MOCK_DATA} />
+      </Content>
+      <Footer className="footer">
+        <Svg nameOfSvg="partCompanies" />
+      </Footer>
+    </Layout>
   );
-}
+};
 
 export default App;
