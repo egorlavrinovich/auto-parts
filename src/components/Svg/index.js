@@ -20,6 +20,7 @@ const SVG_MAP = {
   ),
   partCompanies: [
     <svg
+      id="myImage"
       height="250"
       viewBox="10.907 -.2337481 193.186 47.4907481"
       width="250"
@@ -112,7 +113,7 @@ const SVG_MAP = {
 
 const Svg = ({ nameOfSvg }) => {
   return Array.isArray(SVG_MAP[nameOfSvg])
-    ? SVG_MAP[nameOfSvg]?.map((item) => item)
+    ? SVG_MAP[nameOfSvg]?.map((item) => <div id="sponsor_wrapper">{item}</div>)
     : SVG_MAP[nameOfSvg];
 };
 

@@ -1,6 +1,15 @@
-import { DeleteFilled, EditFilled, EyeFilled } from "@ant-design/icons";
-import { Popconfirm } from "antd";
+import {
+  DeleteFilled,
+  EditFilled,
+  EyeFilled,
+  PlusOutlined,
+} from "@ant-design/icons";
+import { Popconfirm, Button } from "antd";
 import React from "react";
+import Modal from "../../components/Modal";
+import { DEFAULT_MODAL_BTN } from "../modal";
+
+const { add, edit, cancel, ok } = DEFAULT_MODAL_BTN;
 
 export const TABLE_COLUMNS = [
   {
@@ -47,8 +56,16 @@ export const TABLE_COLUMNS = [
     key: "operation",
     render: (_, item) => (
       <div className="table_actions">
-        <EyeFilled onClick={() => console.log(1)} />
-        <EditFilled onClick={() => console.log(1)} />
+        <Modal
+          title="Просмотр записи"
+          modalBtn={[ok]}
+          openBtn={<EyeFilled onClick={() => console.log(item)} />}
+        />
+        <Modal
+          title="Редактирование записи"
+          modalBtn={[cancel, edit]}
+          openBtn={<EditFilled onClick={() => console.log(item)} />}
+        />
         <Popconfirm
           title="Вы действительно хотите удалить запись?"
           okText="Да"
@@ -58,6 +75,24 @@ export const TABLE_COLUMNS = [
           <DeleteFilled style={{ color: "#b00000" }} />
         </Popconfirm>
       </div>
+    ),
+  },
+];
+
+export const TABLE_HEADER_ACTIONS = [
+  {
+    component: (
+      <Modal
+        title="Добавление записи"
+        okText="Добавить"
+        cancelText="Отмена"
+        modalBtn={[cancel, add]}
+        openBtn={
+          <Button ghost type="primary" icon={<PlusOutlined />}>
+            Добавить запись
+          </Button>
+        }
+      />
     ),
   },
 ];
