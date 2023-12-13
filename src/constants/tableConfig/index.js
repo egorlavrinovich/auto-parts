@@ -8,6 +8,7 @@ import { Popconfirm, Button } from "antd";
 import React from "react";
 import Modal from "../../components/Modal";
 import { DEFAULT_MODAL_BTN } from "../modal";
+import { RECORD_FIELDS } from "../recordConfig";
 
 const { add, edit, cancel, ok } = DEFAULT_MODAL_BTN;
 
@@ -58,13 +59,19 @@ export const TABLE_COLUMNS = [
       <div className="table_actions">
         <Modal
           title="Просмотр записи"
+          fieldsConfig={RECORD_FIELDS}
           modalBtn={[ok]}
-          openBtn={<EyeFilled onClick={() => console.log(item)} />}
+          openBtn={<EyeFilled />}
+          currentValue={item}
+          displayType="view"
         />
         <Modal
           title="Редактирование записи"
+          fieldsConfig={RECORD_FIELDS}
           modalBtn={[cancel, edit]}
-          openBtn={<EditFilled onClick={() => console.log(item)} />}
+          openBtn={<EditFilled />}
+          currentValue={item}
+          displayType="edit"
         />
         <Popconfirm
           title="Вы действительно хотите удалить запись?"
@@ -84,9 +91,9 @@ export const TABLE_HEADER_ACTIONS = [
     component: (
       <Modal
         title="Добавление записи"
-        okText="Добавить"
-        cancelText="Отмена"
         modalBtn={[cancel, add]}
+        fieldsConfig={RECORD_FIELDS}
+        displayType="add"
         openBtn={
           <Button ghost type="primary" icon={<PlusOutlined />}>
             Добавить запись

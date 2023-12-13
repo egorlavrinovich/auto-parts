@@ -79,18 +79,21 @@ header svg {
   justify-content: flex-end;
 }
 #sponsor_wrapper {
-  transition: all 0.3s ease;
+  transition: all .3s ease;
   opacity: 0.4;
   cursor: pointer;
 }
-#sponsor_wrapper :hover {
+#sponsor_wrapper:hover {
   opacity: 1;
 }
 .form {
-  display: "flex";
-  justify-content: "flex-end";
-  gap: "15px";
+  margin-top: 4%;
   max-width: 600;
+}
+.form_actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;  
 }
 
 @media screen and (max-width: 400px) {
