@@ -1,9 +1,8 @@
-import React, { useCallback, useMemo, useState } from "react";
 import { FilterOutlined } from "@ant-design/icons";
-import { Drawer, Button } from "antd";
+import { Drawer } from "antd";
+import React, { useCallback, useState } from "react";
 import { FILTER_BTN } from "../../constants/filter";
 import FormItemComponent from "../Form";
-import { RECORD_FIELDS } from "../../constants/recordConfig";
 
 const { cancel, search } = FILTER_BTN;
 
@@ -37,7 +36,7 @@ const Filter = ({ fieldsConfig }) => {
         <FormItemComponent
           displayType="filter"
           formLayout="vertical"
-          config={RECORD_FIELDS}
+          config={fieldsConfig}
           generateBtn={generateFilterBtn}
         />
       </Drawer>

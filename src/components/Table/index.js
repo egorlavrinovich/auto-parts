@@ -1,28 +1,28 @@
 import { Table as AntTable } from "antd";
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 
-const onChange = (pagination, filters, sorter, extra) => {
-  console.log("params", pagination, filters, sorter, extra);
-};
-
-const Table = ({ columns, data, headerActions }) => {
+const Table = ({ columns, data, headerActions, loading }) => {
   const generateHeaderActions = useCallback(() => {
     return headerActions?.map((item) => item?.component);
   }, [headerActions]);
 
-  return (
-    <AntTable
-      title={() => generateHeaderActions(headerActions)}
-      className="main_table"
-      columns={columns}
-      dataSource={data}
-      onChange={onChange}
-      size="middle"
-      scroll={{
-        x: 100,
-      }}
-    />
-  );
+  const generateTable = useMemo(() => {
+    return (
+      <AntTable
+        title={() => generateHeaderActions(headerActions)}
+        loading={loading}
+        className="main_table"
+        columns={columns}
+        dataSource={data}
+        size="middle"
+        scroll={{
+          x: 100,
+        }}
+      />
+    );
+  }, [data, columns, generateHeaderActions, headerActions, loading]);
+
+  return generateTable;
 };
 
 export default Table;

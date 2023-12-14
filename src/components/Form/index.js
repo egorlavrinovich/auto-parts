@@ -1,8 +1,9 @@
 import { Form } from "antd";
-import React, { useMemo } from "react";
-import Select from "../Select";
+import React, { useContext, useMemo } from "react";
+import { FetchService } from "../../API";
+import { FetchContext } from "../../App";
 import Input from "../Input";
-import { Button } from "antd";
+import Select from "../Select";
 
 const FORM_ITEMS_MAP = (item, isOnlyRead) => ({
   textInput: <Input type="textInput" disabled={isOnlyRead} />,
@@ -18,18 +19,28 @@ const FormItemComponent = ({
   formLayout = "horizontal",
 }) => {
   const [form] = Form.useForm();
+  const { fetchData, getData } = useContext(FetchContext);
   const isOnlyRead = displayType === "view";
   const isFilter = displayType === "filter";
+  const isAdd = displayType === "add";
+  const isEdit = displayType === "edit";
 
-  const onFinish = (value) => {
-    console.log("Success:", value);
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  const onFinish = async (value) => {
+    if (isAdd)
+      fetchData(() => FetchService.addRecord(value).then(() => getData()));
+    if (isEdit)
+      fetchData(() =>
+        FetchService.editRecord(values?.id, value).then(() => getData())
+      );
+    if (isFilter) {
+      const filterOption = Object.fromEntries(
+        Object.entries(value).filter(([_, value]) => value)
+      );
+      fetchData(() => getData(filterOption));
+    }
   };
 
   const generateContent = useMemo(() => {
-    console.log(values);
     return config?.map((item) => (
       <Form.Item
         style={{ marginBottom: isFilter ? 12 : 18 }}
@@ -42,7 +53,7 @@ const FormItemComponent = ({
         {FORM_ITEMS_MAP(item, isOnlyRead)[item?.type]}
       </Form.Item>
     ));
-  }, [config, values, isOnlyRead, displayType]);
+  }, [config, values, isOnlyRead, displayType, isFilter]);
 
   return (
     <Form
@@ -62,7 +73,6 @@ const FormItemComponent = ({
         padding: 0,
       }}
       onFinish={onFinish}
-      // onFinishFailed={failedValdation}
       autoComplete="off"
     >
       {generateContent}

@@ -1,36 +1,54 @@
 import { Layout } from "antd";
-import React from "react";
+import React, { useEffect, createContext, useState } from "react";
+import { FetchService } from "./API";
 import "./App.css";
 import Filter from "./components/Filter";
 import Svg from "./components/Svg";
 import Table from "./components/Table";
-import {
-  TABLE_HEADER_ACTIONS,
-  MOCK_DATA,
-  TABLE_COLUMNS,
-} from "./constants/tableConfig";
+import { RECORD_FIELDS } from "./constants/recordConfig";
+import { TABLE_COLUMNS, TABLE_HEADER_ACTIONS } from "./constants/tableConfig";
+import { UseFetching } from "./hooks/useFetching";
+import Message from "./components/Message";
+import { TYPE_OF_MESSAGE } from "./constants/messages";
 
 const { Header, Content, Footer } = Layout;
 
+export const FetchContext = createContext();
+
 const App = () => {
+  const [data, setData] = useState();
+  const { loading, error, fetchData } = UseFetching();
+
+  async function getData(filterOption) {
+    setData(await FetchService.fetchData(filterOption));
+  }
+
+  useEffect(() => {
+    fetchData(getData);
+  }, []);
+
   return (
-    <Layout className="layout_container">
-      <Header className="header">
-        <Svg nameOfSvg="logo" />
-        <div className="demo-logo">AUTO SKLAD</div>
-        <Filter />
-      </Header>
-      <Content className="site-layout">
-        <Table
-          columns={TABLE_COLUMNS}
-          data={MOCK_DATA}
-          headerActions={TABLE_HEADER_ACTIONS}
-        />
-      </Content>
-      <Footer className="footer">
-        <Svg nameOfSvg="partCompanies" />
-      </Footer>
-    </Layout>
+    <FetchContext.Provider value={{ getData, fetchData }}>
+      <Layout className="layout_container">
+        <Header className="header">
+          <Svg nameOfSvg="logo" />
+          <div className="demo-logo">AUTO SKLAD</div>
+          <Filter fieldsConfig={RECORD_FIELDS} />
+        </Header>
+        <Content className="site-layout">
+          <Table
+            columns={TABLE_COLUMNS}
+            data={data}
+            headerActions={TABLE_HEADER_ACTIONS}
+            loading={loading}
+          />
+        </Content>
+        <Footer className="footer">
+          <Svg nameOfSvg="partCompanies" />
+        </Footer>
+        {error && <Message messages={TYPE_OF_MESSAGE?.error(error)} />}
+      </Layout>
+    </FetchContext.Provider>
   );
 };
 

@@ -4,27 +4,27 @@ const rules = {
 
 export const CARS_BRANDS = [
   {
-    value: "audi",
+    value: "Audi",
     label: "Audi",
   },
   {
-    value: "bmw",
+    value: "BMW",
     label: "BMW",
   },
   {
-    value: "vw",
+    value: "Volkswagen",
     label: "Volkswagen",
   },
   {
-    value: "porshe",
+    value: "Porsche",
     label: "Porsche",
   },
   {
-    value: "opel",
+    value: "Opel",
     label: "Opel",
   },
   {
-    value: "maybach",
+    value: "Maybach",
     label: "Maybach",
   },
 ];

@@ -4,8 +4,9 @@ import {
   EyeFilled,
   PlusOutlined,
 } from "@ant-design/icons";
-import { Popconfirm, Button } from "antd";
+import { Button } from "antd";
 import React from "react";
+import Confirm from "../../components/Confirm";
 import Modal from "../../components/Modal";
 import { DEFAULT_MODAL_BTN } from "../modal";
 import { RECORD_FIELDS } from "../recordConfig";
@@ -16,19 +17,22 @@ export const TABLE_COLUMNS = [
   {
     title: "Название запчасти",
     dataIndex: "partName",
+    sorter: {
+      compare: (a, b) => a?.partName.localeCompare(b?.partName),
+    },
   },
   {
     title: "Марка авто",
     dataIndex: "carBrand",
     sorter: {
-      compare: (a, b) => a.carBrand - b.carBrand,
+      compare: (a, b) => a?.carBrand.localeCompare(b?.carBrand),
     },
   },
   {
     title: "Производитель",
     dataIndex: "maker",
     sorter: {
-      compare: (a, b) => a.maker - b.maker,
+      compare: (a, b) => a?.maker.localeCompare(b?.maker),
     },
   },
   {
@@ -61,7 +65,7 @@ export const TABLE_COLUMNS = [
           title="Просмотр записи"
           fieldsConfig={RECORD_FIELDS}
           modalBtn={[ok]}
-          openBtn={<EyeFilled />}
+          openBtn={<EyeFilled style={{ cursor: "pointer" }} />}
           currentValue={item}
           displayType="view"
         />
@@ -69,18 +73,18 @@ export const TABLE_COLUMNS = [
           title="Редактирование записи"
           fieldsConfig={RECORD_FIELDS}
           modalBtn={[cancel, edit]}
-          openBtn={<EditFilled />}
+          openBtn={<EditFilled style={{ cursor: "pointer" }} />}
           currentValue={item}
           displayType="edit"
         />
-        <Popconfirm
+        <Confirm
           title="Вы действительно хотите удалить запись?"
           okText="Да"
           cancelText="Отмена"
-          onConfirm={() => console.log(item)}
+          currentItem={item}
         >
           <DeleteFilled style={{ color: "#b00000" }} />
-        </Popconfirm>
+        </Confirm>
       </div>
     ),
   },
@@ -101,44 +105,5 @@ export const TABLE_HEADER_ACTIONS = [
         }
       />
     ),
-  },
-];
-
-export const MOCK_DATA = [
-  {
-    id: "1",
-    partName: "Шрус",
-    carBrand: "Audi",
-    maker: 60,
-    sum: 70,
-    available: 70,
-    delivery: 5,
-  },
-  {
-    id: "2",
-    partName: "Коленчатый вал",
-    carBrand: "Mersecedes",
-    maker: 66,
-    sum: 89,
-    available: 20,
-    delivery: 2,
-  },
-  {
-    id: "3",
-    partName: "Парктроник",
-    carBrand: "Opel",
-    maker: 90,
-    sum: 70,
-    available: 30,
-    delivery: 1,
-  },
-  {
-    id: "4",
-    partName: "Дверная ручка",
-    carBrand: "Volvo",
-    maker: 99,
-    sum: 89,
-    available: 0,
-    delivery: "-",
   },
 ];
