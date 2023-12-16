@@ -96,10 +96,10 @@ header svg {
   gap: 10px;  
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .footer svg {
-    width: 20%;
-    height: 20%;
+    width: 100%;
+    height: 100%;
   }
   .site-layout {
     padding: 0 5px;
