@@ -73,4 +73,10 @@ export const RECORD_FIELDS = [
     type: "numberInput",
     rules: [rules.require],
   },
+  {
+    key: "Image",
+    title: "Фото",
+    dataIndex: "image",
+    type: "upload",
+  },
 ];

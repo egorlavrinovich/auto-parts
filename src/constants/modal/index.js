@@ -8,19 +8,27 @@ const isValidateFields = async (form) => {
 };
 
 export const DEFAULT_MODAL_BTN = {
-  add: (closeModal, form) => (
+  add: (closeModal, form, loading) => (
     <Button
       onClick={async () => {
         (await isValidateFields(form)) && closeModal();
       }}
       htmlType="submit"
       type="primary"
+      disabled={loading}
     >
       Добавить запись
     </Button>
   ),
-  edit: (closeModal) => (
-    <Button onClick={() => closeModal()} htmlType="submit" type="primary">
+  edit: (closeModal, form, loading) => (
+    <Button
+      onClick={async () => {
+        (await isValidateFields(form)) && closeModal();
+      }}
+      disabled={loading}
+      htmlType="submit"
+      type="primary"
+    >
       Сохранить
     </Button>
   ),

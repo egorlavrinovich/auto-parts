@@ -20,8 +20,8 @@ const Modal = ({
     setIsModalOpen(false);
   };
 
-  const generateModalBtn = (form = {}) => {
-    return modalBtn?.map((btn) => btn(handleOk, form));
+  const generateModalBtn = (form = {}, loading) => {
+    return modalBtn?.map((btn) => btn(handleOk, form, loading));
   };
 
   return (

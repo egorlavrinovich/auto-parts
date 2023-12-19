@@ -1,5 +1,5 @@
+import { Input as AntInput, InputNumber } from "antd";
 import React from "react";
-import { Input as AntInput, InputNumber, Typography } from "antd";
 
 const Input = ({ type, defaultValue = "", ...rest }) => {
   return (

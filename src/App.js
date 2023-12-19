@@ -28,7 +28,7 @@ const App = () => {
   }, []);
 
   return (
-    <FetchContext.Provider value={{ getData, fetchData }}>
+    <FetchContext.Provider value={{ getData, fetchData, loading }}>
       <Layout className="layout_container">
         <Header className="header">
           <Svg nameOfSvg="logo" />

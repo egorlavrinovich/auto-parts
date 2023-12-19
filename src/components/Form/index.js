@@ -4,11 +4,15 @@ import { FetchService } from "../../API";
 import { FetchContext } from "../../App";
 import Input from "../Input";
 import Select from "../Select";
+import Upload from "../Upload";
 
-const FORM_ITEMS_MAP = (item, isOnlyRead) => ({
+const FORM_ITEMS_MAP = (item, isOnlyRead, values, form) => ({
   textInput: <Input type="textInput" disabled={isOnlyRead} />,
   numberInput: <Input disabled={isOnlyRead} />,
   select: <Select data={item?.selectData} disabled={isOnlyRead} />,
+  upload: (
+    <Upload src={values[item?.dataIndex]} form={form} disabled={isOnlyRead} />
+  ),
 });
 
 const FormItemComponent = ({
@@ -19,7 +23,7 @@ const FormItemComponent = ({
   formLayout = "horizontal",
 }) => {
   const [form] = Form.useForm();
-  const { fetchData, getData } = useContext(FetchContext);
+  const { fetchData, getData, loading } = useContext(FetchContext);
   const isOnlyRead = displayType === "view";
   const isFilter = displayType === "filter";
   const isAdd = displayType === "add";
@@ -50,10 +54,10 @@ const FormItemComponent = ({
         rules={displayType !== "filter" && item?.rules}
         initialValue={values[item?.dataIndex]}
       >
-        {FORM_ITEMS_MAP(item, isOnlyRead)[item?.type]}
+        {FORM_ITEMS_MAP(item, isOnlyRead, values, form)[item?.type]}
       </Form.Item>
     ));
-  }, [config, values, isOnlyRead, displayType, isFilter]);
+  }, [config, values, isOnlyRead, displayType, isFilter, form]);
 
   return (
     <Form
@@ -76,7 +80,7 @@ const FormItemComponent = ({
       autoComplete="off"
     >
       {generateContent}
-      <div className="form_actions">{generateBtn(form)}</div>
+      <div className="form_actions">{generateBtn(form, loading)}</div>
     </Form>
   );
 };
