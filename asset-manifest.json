@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/auto-parts/static/css/main.03d3520e.css",
-    "main.js": "/auto-parts/static/js/main.78239124.js",
+    "main.js": "/auto-parts/static/js/main.d2ceecbf.js",
     "static/media/background.webp": "/auto-parts/static/media/background.13f1016dbce61a3f7452.webp",
     "index.html": "/auto-parts/index.html",
     "main.03d3520e.css.map": "/auto-parts/static/css/main.03d3520e.css.map",
-    "main.78239124.js.map": "/auto-parts/static/js/main.78239124.js.map"
+    "main.d2ceecbf.js.map": "/auto-parts/static/js/main.d2ceecbf.js.map"
   },
   "entrypoints": [
     "static/css/main.03d3520e.css",
-    "static/js/main.78239124.js"
+    "static/js/main.d2ceecbf.js"
   ]
 }
