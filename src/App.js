@@ -5,7 +5,7 @@ import "./App.css";
 import Filter from "./components/Filter";
 import Svg from "./components/Svg";
 import Table from "./components/Table";
-import { RECORD_FIELDS } from "./constants/recordConfig";
+import { FILTER_CONFIG } from "./constants/filter";
 import { TABLE_COLUMNS, TABLE_HEADER_ACTIONS } from "./constants/tableConfig";
 import { UseFetching } from "./hooks/useFetching";
 import Message from "./components/Message";
@@ -33,7 +33,7 @@ const App = () => {
         <Header className="header">
           <Svg nameOfSvg="logo" />
           <div className="demo-logo">AUTO SKLAD</div>
-          <Filter fieldsConfig={RECORD_FIELDS} />
+          <Filter fieldsConfig={FILTER_CONFIG} />
         </Header>
         <Content className="site-layout">
           <Table

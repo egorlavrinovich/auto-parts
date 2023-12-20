@@ -51,13 +51,13 @@ const FormItemComponent = ({
         key={item?.key}
         name={item?.dataIndex}
         label={item?.title}
-        rules={displayType !== "filter" && item?.rules}
+        rules={item?.rules}
         initialValue={values[item?.dataIndex]}
       >
         {FORM_ITEMS_MAP(item, isOnlyRead, values, form)[item?.type]}
       </Form.Item>
     ));
-  }, [config, values, isOnlyRead, displayType, isFilter, form]);
+  }, [config, values, isOnlyRead, isFilter, form]);
 
   return (
     <Form
