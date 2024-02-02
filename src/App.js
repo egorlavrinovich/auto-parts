@@ -22,7 +22,7 @@ const App = () => {
 
   async function getData(filterOption) {
     setData(await FetchService.fetchData(filterOption));
-    const response = await axios.get('https://my-json-server.typicode.com/egorlavrinovich/auto-parts')
+    const response = await axios.get('https://my-json-server.typicode.com/egorlavrinovich/auto-parts/posts/1')
     console.log(response)
     return response
   }
