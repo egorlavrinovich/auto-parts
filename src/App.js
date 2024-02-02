@@ -10,6 +10,7 @@ import { TABLE_COLUMNS, TABLE_HEADER_ACTIONS } from "./constants/tableConfig";
 import { UseFetching } from "./hooks/useFetching";
 import Message from "./components/Message";
 import { TYPE_OF_MESSAGE } from "./constants/messages";
+import axios from "axios";
 
 const { Header, Content, Footer } = Layout;
 
@@ -21,6 +22,9 @@ const App = () => {
 
   async function getData(filterOption) {
     setData(await FetchService.fetchData(filterOption));
+    const response = await axios.get('https://my-json-server.typicode.com/egorlavrinovich/auto-parts')
+    console.log(response)
+    return response
   }
 
   useEffect(() => {
