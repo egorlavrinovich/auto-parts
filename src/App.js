@@ -10,7 +10,6 @@ import { TABLE_COLUMNS, TABLE_HEADER_ACTIONS } from "./constants/tableConfig";
 import { UseFetching } from "./hooks/useFetching";
 import Message from "./components/Message";
 import { TYPE_OF_MESSAGE } from "./constants/messages";
-import axios from "axios";
 
 const { Header, Content, Footer } = Layout;
 
@@ -20,12 +19,8 @@ const App = () => {
   const [data, setData] = useState();
   const { loading, error, fetchData } = UseFetching();
 
-  async function getData(filterOption) {
+  const getData = async (filterOption) =>
     setData(await FetchService.fetchData(filterOption));
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}posts/1`)
-    console.log(response)
-    return response
-  }
 
   useEffect(() => {
     fetchData(getData);

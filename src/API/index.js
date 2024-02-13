@@ -2,31 +2,28 @@ import axios from "axios";
 
 export class FetchService {
   static fetchData = async (filterOption) => {
-    const response = await axios.get(
-      "https://64538344c18adbbdfe9f5c3b.mockapi.io/api/v1/all",
-      {
-        params: filterOption,
-      }
-    );
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/posts`, {
+      params: filterOption,
+    });
     return response?.data;
   };
   static addRecord = async (body) => {
     const response = await axios.post(
-      "https://64538344c18adbbdfe9f5c3b.mockapi.io/api/v1/all",
+      `${process.env.REACT_APP_API_URL}/posts`,
       body
     );
     return response?.data;
   };
   static editRecord = async (id, body) => {
     const response = await axios.put(
-      `https://64538344c18adbbdfe9f5c3b.mockapi.io/api/v1/all/${id}`,
+      `${process.env.REACT_APP_API_URL}/posts/${id}`,
       body
     );
     return response?.data;
   };
   static deleteRecord = async (id) => {
     const response = await axios.delete(
-      `https://64538344c18adbbdfe9f5c3b.mockapi.io/api/v1/all/${id}`
+      `${process.env.REACT_APP_API_URL}/posts/${id}`
     );
     return response?.data;
   };

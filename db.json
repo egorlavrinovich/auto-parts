@@ -1,19 +1,112 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "id": "4",
+      "partName": "Коленчатый вал",
+      "carBrand": "BMW",
+      "maker": "Felbi Bilstein",
+      "sum": 1500,
+      "available": 1,
+      "delivery": 5
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "createdAt": "2023-12-14T06:32:33.374Z",
+      "name": "Jonathon Kessler",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/447.jpg",
+      "id": "6",
+      "partName": "Коленвал",
+      "carBrand": "BMW",
+      "maker": "LUK",
+      "sum": 4,
+      "available": 32,
+      "delivery": 2
+    },
+    {
+      "createdAt": "2023-12-13T20:21:19.813Z",
+      "name": "Beverly Rippin",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/552.jpg",
+      "id": "8",
+      "partName": "лобовое стекло",
+      "carBrand": "Opel",
+      "maker": "lwk",
+      "sum": 276,
+      "available": 3,
+      "delivery": 2
+    },
+    {
+      "createdAt": "2023-12-14T01:23:23.598Z",
+      "name": "Henrietta Gerlach",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/296.jpg",
+      "id": "9",
+      "partName": "глушитель",
+      "carBrand": "Volkswagen",
+      "maker": "металлург",
+      "sum": 123,
+      "available": 12,
+      "delivery": 3
+    },
+    {
+      "createdAt": "2023-12-14T08:48:53.291Z",
+      "name": "Ross Franecki",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1227.jpg",
+      "id": "10",
+      "partName": "Свеча зажигания",
+      "carBrand": "BMW",
+      "maker": "Patron",
+      "sum": 43,
+      "available": 22,
+      "delivery": 2
+    },
+    {
+      "createdAt": "2023-12-15T22:12:37.153Z",
+      "name": "Kyle Wyman",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/727.jpg",
+      "id": "11",
+      "partName": "Ремень ГРМ",
+      "carBrand": "Porsche",
+      "maker": "LUK",
+      "sum": 500,
+      "available": 1,
+      "delivery": 100
+    },
+    {
+      "createdAt": "2023-12-19T14:43:30.206Z",
+      "name": "Debbie Cremin I",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/785.jpg",
+      "id": "14",
+      "partName": "Елочная игрушка",
+      "carBrand": "Opel",
+      "maker": "asd",
+      "sum": 2,
+      "available": 2,
+      "delivery": 2,
+      "image": "8f8bfed6-1a96-438a-8a84-ede50e5b7b8b"
+    },
+    {
+      "createdAt": "2023-12-27T03:10:32.811Z",
+      "name": "Victoria Kassulke",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1008.jpg",
+      "id": "15",
+      "partName": "Название",
+      "carBrand": "Porsche",
+      "maker": "ыва",
+      "sum": 312,
+      "available": 123,
+      "delivery": 123,
+      "image": "4da5c638-2705-4040-9c1b-0ddf30af73ba"
+    },
+    {
+      "createdAt": "2024-01-16T03:21:04.034Z",
+      "name": "Ms. Isaac Rodriguez",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/565.jpg",
+      "id": "16",
+      "partName": "тюнинг ",
+      "carBrand": "Maybach",
+      "maker": "беларусь ",
+      "sum": 1000,
+      "available": 12,
+      "delivery": 5,
+      "image": "8a0e5e0d-a4c5-4656-992a-f2e80cdfd6a1"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
