@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const Product = new mongoose.Schema({
   partName: { type: String, required: true },
@@ -9,4 +9,4 @@ const Product = new mongoose.Schema({
   delivery: { type: Number },
 });
 
-export default mongoose.model("Product", Product);
+module.exports = mongoose.model("Product", Product);

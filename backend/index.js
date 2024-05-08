@@ -1,6 +1,6 @@
-import express from "express";
-import mongoose from "mongoose";
-import Product from "./Product.js";
+const express = require("express");
+const mongoose = require("mongoose");
+const Product = require("./Product.js");
 
 const PORT = 5000;
 const DB_URL =
