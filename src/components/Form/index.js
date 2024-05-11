@@ -31,11 +31,21 @@ const FormItemComponent = ({
 
   const onFinish = async (value) => {
     if (isAdd)
-      fetchData(() => FetchService.addRecord(value).then(() => getData()));
-    if (isEdit)
+      fetchData(() => {
+        try {
+          FetchService.addRecord(value).then(() => getData());
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    if (isEdit) {
       fetchData(() =>
-        FetchService.editRecord(values?.id, value).then(() => getData())
+        FetchService.editRecord({ ...value, id: values?._id }).then(() =>
+          getData()
+        )
       );
+    }
+
     if (isFilter) {
       const filterOption = Object.fromEntries(
         Object.entries(value).filter(([_, value]) => value)

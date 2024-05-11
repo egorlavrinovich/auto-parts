@@ -1,22 +1,28 @@
 import axios from "axios";
 
+const PATH = process.env.REACT_APP_API_URL;
+
 export class FetchService {
   static fetchData = async (filterOption) => {
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/posts`, {
       params: filterOption,
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     return response?.data;
   };
   static addRecord = async (body) => {
-    const response = await axios.post(
-      `${process.env.REACT_APP_API_URL}/posts`,
-      body
-    );
+    const response = await axios.post(`${PATH}/posts`, JSON.stringify(body), {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     return response?.data;
   };
-  static editRecord = async (id, body) => {
+  static editRecord = async (body) => {
     const response = await axios.put(
-      `${process.env.REACT_APP_API_URL}/posts/${id}`,
+      `${process.env.REACT_APP_API_URL}/posts`,
       body
     );
     return response?.data;

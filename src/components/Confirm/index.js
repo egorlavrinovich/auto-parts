@@ -8,7 +8,7 @@ const Confirm = ({ children, currentItem, ...rest }) => {
 
   const deleteRecord = async (item) =>
     await fetchData(() =>
-      FetchService.deleteRecord(item?.id).then(() => getData())
+      FetchService.deleteRecord(item?._id).then(() => getData())
     );
 
   return (
