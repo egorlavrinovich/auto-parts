@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const PATH = process.env.REACT_APP_API_URL;
-
 export class FetchService {
   static fetchData = async (filterOption) => {
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/posts`, {
@@ -13,11 +11,15 @@ export class FetchService {
     return response?.data;
   };
   static addRecord = async (body) => {
-    const response = await axios.post(`${PATH}/posts`, JSON.stringify(body), {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await axios.post(
+      `${process.env.REACT_APP_API_URL}/posts`,
+      JSON.stringify(body),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     return response?.data;
   };
   static editRecord = async (body) => {
