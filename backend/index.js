@@ -2,14 +2,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = require("./router.js");
 const cors = require("cors");
+const fileUpload = require("express-fileupload");
 
 const PORT = process.env.PORT || 5000;
-const DB_URL = process.env.DB_URL;
+const DB_URL =
+  "mongodb://egorlavrinovich:user@ac-1crtasn-shard-00-00.qdjkfij.mongodb.net:27017,ac-1crtasn-shard-00-01.qdjkfij.mongodb.net:27017,ac-1crtasn-shard-00-02.qdjkfij.mongodb.net:27017/?ssl=true&replicaSet=atlas-ydpl7y-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0";
+// process.env.DB_URL
 
 const app = express();
 app.use(cors());
 
 app.use(express.json());
+app.use(express.static("static"));
+app.use(fileUpload());
 app.use("", router);
 
 const startApp = async () => {
@@ -20,8 +25,6 @@ const startApp = async () => {
     console.log(error);
   }
 };
-
-console.log(DB_URL);
 
 startApp();
 

@@ -1,9 +1,9 @@
-const Post = require("./Post");
+const PostService = require("./PostService");
 
 class PostController {
   async create(req, res) {
     try {
-      const product = await Post.create(req.body);
+      const product = await PostService.create(req?.body, req.files);
       res.status(200).json(product);
     } catch (error) {
       res.status(500).json(error);
@@ -11,7 +11,7 @@ class PostController {
   }
   async getAll(req, res) {
     try {
-      const product = await Post.find(req?.query);
+      const product = await PostService.getAll(req?.query);
       res.status(200).json(product);
     } catch (error) {
       res.status(500).json(error);
@@ -19,9 +19,8 @@ class PostController {
   }
   async getById(req, res) {
     const { id } = req.params;
-    if (!id) res.status(400).json({ message: "Enter Id" });
     try {
-      const product = await Post.findById(id);
+      const product = await PostService.getById(id);
       res.status(200).json(product);
     } catch (error) {
       res.status(500).json(error);
@@ -29,9 +28,8 @@ class PostController {
   }
   async deleteById(req, res) {
     const { id } = req.params;
-    if (!id) res.status(400).json({ message: "Enter Id" });
     try {
-      const product = await Post.findByIdAndDelete(id);
+      const product = await PostService.deleteById(id);
       res.status(200).json(product);
     } catch (error) {
       res.status(500).json(error);
@@ -39,12 +37,20 @@ class PostController {
   }
   async updateById(req, res) {
     const { id } = req?.body;
-    if (!id) res.status(400).json({ message: "Enter Id" });
     try {
-      const product = await Post.findByIdAndUpdate(id, req?.body, {
+      const product = await PostService.updateById(id, req?.body, {
         new: true,
       });
       res.status(200).json(product);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  }
+  async uploadFile(req, res) {
+    try {
+      console.log(req?.files);
+      const file = await PostService.uploadFile(req?.files);
+      res.status(200).json(file);
     } catch (error) {
       res.status(500).json(error);
     }
