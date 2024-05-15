@@ -13,9 +13,9 @@ const Upload = ({ name = "file", form, src, disabled }) => {
 
   const onChange = (info) => {
     if (info.file.status === "done") {
-      setFileId(info?.file?.response?.uuid);
+      setFileId(info?.file?.response);
       message.success(`Загрузка файла: ${info.file.name} произошла успешно`);
-      form.setFieldsValue({ image: info?.file?.response?.uuid });
+      form.setFieldsValue({ image: info?.file?.response });
     } else if (info.file.status === "error") {
       message.error(`Произошла ошибка при загрузке файла: ${info.file.name}`);
     }

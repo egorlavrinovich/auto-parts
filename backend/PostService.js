@@ -1,5 +1,4 @@
 const Post = require("./Post");
-const FileService = require("./FileService.js");
 
 class PostService {
   async create(post) {
@@ -21,9 +20,6 @@ class PostService {
     return await Post.findByIdAndUpdate(id, body, {
       new: true,
     });
-  }
-  async uploadFile(file) {
-    return FileService.saveFile(file);
   }
 }
 

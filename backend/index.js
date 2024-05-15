@@ -5,7 +5,6 @@ const cors = require("cors");
 
 const PORT = process.env.PORT || 5000;
 const DB_URL = process.env.DB_URL;
-
 const app = express();
 app.use(cors());
 
@@ -20,8 +19,6 @@ const startApp = async () => {
     console.log(error);
   }
 };
-
-console.log(DB_URL);
 
 startApp();
 
