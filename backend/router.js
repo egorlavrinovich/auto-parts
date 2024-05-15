@@ -8,6 +8,5 @@ router.get("/posts", PostController.getAll);
 router.get("/posts/:id", PostController.getById);
 router.put("/posts", PostController.updateById);
 router.delete("/posts/:id", PostController.deleteById);
-router.post("/file", PostController.uploadFile);
 
 module.exports = router;

@@ -13,6 +13,10 @@ const previewConfig = {
 const defaultPicture = "https://turbok.by/public/img/no-photo--lg.png";
 
 const Image = ({ src }) => (
-  <AntImage width={200} src={src || defaultPicture} preview={previewConfig} />
+  <AntImage
+    width={200}
+    src={(src && `https://ucarecdn.com/${src}/`) || defaultPicture}
+    preview={previewConfig}
+  />
 );
 export default Image;
