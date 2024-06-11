@@ -1,6 +1,6 @@
 const Post = require("./Post");
 const SELECTORS = require("./constants");
-const puppeteer = require("puppeteer");
+const chromium = require("chrome-aws-lambda");
 
 class PostController {
     async create(req, res) {
@@ -68,10 +68,13 @@ class PostController {
 
     async parseData(req, res) {
         const {URL_PARSE} = SELECTORS;
-        const browser = await puppeteer.launch({
+        const browser = await chromium.puppeteer.launch({
+            args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+            defaultViewport: chromium.defaultViewport,
+            executablePath: await chromium.executablePath,
             headless: true,
-            defaultViewport: null,
-        });
+            ignoreHTTPSErrors: true,
+        })
 
         const page = await browser.newPage();
         await page.goto(URL_PARSE);
