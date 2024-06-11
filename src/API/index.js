@@ -35,4 +35,12 @@ export class FetchService {
     );
     return response?.data;
   };
+  static getProducts = async () => {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/posts`, {
+          headers: {
+              "Content-Type": "application/json",
+          },
+      });
+      return response?.data;
+    }
 }
