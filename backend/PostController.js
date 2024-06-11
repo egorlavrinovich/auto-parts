@@ -1,6 +1,5 @@
 const Post = require("./Post");
 const SELECTORS = require("./constants");
-const edgeChromium = require("chrome-aws-lambda");
 const puppeteer = require('puppeteer-core');
 const chrome = require('@sparticuz/chromium')
 
@@ -69,8 +68,6 @@ class PostController {
 
     async parseData(req, res) {
         const {URL_PARSE} = SELECTORS;
-        const LOCAL_CHROME_EXECUTABLE = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-        const executablePath = await edgeChromium.executablePath || LOCAL_CHROME_EXECUTABLE
         const browser = await puppeteer.launch({
             args: chrome.args,
             defaultViewport: chrome.defaultViewport,
