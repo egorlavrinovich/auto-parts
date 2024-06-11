@@ -1,11 +1,11 @@
 const Post = require("./Post");
 const SELECTORS = require("./constants");
-const chromium = require("chrome-aws-lambda");
+const edgeChromium = require("chrome-aws-lambda");
+const puppeteer = require('puppeteer-core');
 
 class PostController {
     async create(req, res) {
         try {
-            console.log(req.body)
             const product = await Post.create(req.body);
             res.status(200).json(product);
         } catch (error) {
@@ -68,12 +68,12 @@ class PostController {
 
     async parseData(req, res) {
         const {URL_PARSE} = SELECTORS;
-        const browser = await chromium.puppeteer.launch({
-            args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
-            defaultViewport: chromium.defaultViewport,
-            executablePath: await chromium.executablePath,
-            headless: true,
-            ignoreHTTPSErrors: true,
+        const LOCAL_CHROME_EXECUTABLE = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+        const executablePath = await edgeChromium.executablePath || LOCAL_CHROME_EXECUTABLE
+        const browser = await puppeteer.launch({
+            executablePath,
+            args: edgeChromium.args,
+            headless: false,
         })
 
         const page = await browser.newPage();
