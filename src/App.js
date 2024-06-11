@@ -38,7 +38,6 @@ const App = () => {
                     <Table
                         columns={TABLE_COLUMNS}
                         data={data}
-                        headerActions={TABLE_HEADER_ACTIONS(loadData,fetchData)}
                         loading={loading}
                     />
                 </Content>

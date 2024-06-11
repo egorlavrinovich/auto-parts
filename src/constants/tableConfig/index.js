@@ -31,7 +31,7 @@ export const TABLE_COLUMNS = [
     {
         title: "Фото",
         dataIndex: "image",
-        render: (record) => <Image style={{height: '100px', minWidth: '80px'}} src={record}/>
+        render: (record) => <Image style={{height: '100px', minWidth: '100px'}} src={record}/>
     },
     {
         title: "Действие",
